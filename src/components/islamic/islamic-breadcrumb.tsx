@@ -23,12 +23,12 @@ export function IslamicBreadcrumb({
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem>
+        {/* <BreadcrumbItem>
           <BreadcrumbLink href="/islamic-studies">
             Islamic Studies
           </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        </BreadcrumbItem> */}
+        {/* <BreadcrumbSeparator /> */}
         <BreadcrumbItem>
           {subsection ? (
             <BreadcrumbLink

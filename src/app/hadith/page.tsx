@@ -31,9 +31,6 @@ export default function HadithPage() {
                 <BookOpen className="h-5 w-5" />
                 Sahih al-Bukhari
               </CardTitle>
-              <CardDescription>
-                The most authentic collection of Hadith
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -49,9 +46,6 @@ export default function HadithPage() {
                 <BookOpen className="h-5 w-5" />
                 Sahih Muslim
               </CardTitle>
-              <CardDescription>
-                Second most authentic Hadith collection
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
@@ -60,27 +54,54 @@ export default function HadithPage() {
               </p>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                Other Collections
+                <BookOpen className="h-5 w-5" />
+                Sunan Abu Dawud
               </CardTitle>
-              <CardDescription>
-                Abu Dawood, Tirmidhi, Nasa&apos;i, Ibn Majah
-              </CardDescription>
+              {/* <CardDescription>
+                Second most authentic Hadith collection
+              </CardDescription> */}
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Access to other major Hadith collections that complete the Kutub
-                al-Sittah (Six Books).
+                Compiled by Imam Muslim, known for its strict criteria and
+                systematic arrangement of authentic narrations.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="h-5 w-5" />
+                Sunan Ibn Majah
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Compiled by Imam Muslim, known for its strict criteria and
+                systematic arrangement of authentic narrations.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="h-5 w-5" />
+                Jami at-Tirmidhi
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Compiled by Imam Muslim, known for its strict criteria and
+                systematic arrangement of authentic narrations.
               </p>
             </CardContent>
           </Card>
         </div>
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Featured Hadith</CardTitle>
             <CardDescription>
@@ -97,7 +118,7 @@ export default function HadithPage() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );

@@ -17,45 +17,28 @@ import Link from "next/link";
 const hadithSections = [
   {
     name: "Sahih Bukhari",
-    href: "/hadith/bukhari",
+    href: "/hadith/sahih-bukhari",
     icon: CheckCircle,
-    description: "Most authentic collection",
   },
   {
     name: "Sahih Muslim",
-    href: "/hadith/muslim",
+    href: "/hadith?collection=muslim",
     icon: CheckCircle,
-    description: "Second most authentic",
   },
   {
-    name: "Sunan Collections",
-    href: "/hadith/sunan",
-    icon: Library,
-    description: "Abu Dawud, Tirmidhi, etc.",
+    name: "Sunan Abu Dawud",
+    href: "/hadith?collection=abudawud",
+    icon: CheckCircle,
   },
   {
-    name: "Hadith Search",
-    href: "/hadith/search",
-    icon: Search,
-    description: "Search by topic/text",
+    name: "Sunan Ibn Majah",
+    href: "/hadith?collection=ibnmajah",
+    icon: CheckCircle,
   },
   {
-    name: "Narrators",
-    href: "/hadith/narrators",
-    icon: Users,
-    description: "Chain of transmission",
-  },
-  {
-    name: "Classifications",
-    href: "/hadith/classifications",
-    icon: AlertCircle,
-    description: "Sahih, Hasan, Da&apos;if",
-  },
-  {
-    name: "Study Collection",
-    href: "/hadith/collection",
-    icon: BookMarked,
-    description: "Saved hadiths",
+    name: "Jami at-Tirmidhi",
+    href: "/hadith?collection=tirmidhi",
+    icon: CheckCircle,
   },
 ];
 
@@ -99,9 +82,6 @@ export function HadithSidebar({ currentPath }: HadithSidebarProps) {
                   <Icon className="mr-2 h-4 w-4" />
                   <div className="flex-1 text-left">
                     <div>{section.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {section.description}
-                    </div>
                   </div>
                   {isActive && <ChevronRight className="ml-auto h-4 w-4" />}
                 </Link>
