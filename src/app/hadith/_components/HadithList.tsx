@@ -5,6 +5,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Props = {
   slug: string;
@@ -35,37 +41,46 @@ export default function HadithList({ slug }: Props) {
     fetchHadith();
   }, [page, limit, slug]);
 
-  const columns: ColumnDef<any>[] = [
-    {
-      accessorKey: "chapterNumber",
-      header: "Chapter No.",
-    },
-    {
-      accessorKey: "chapterArabic",
-      header: "Chapter (Arabic)",
-    },
-    {
-      accessorKey: "chapterEnglish",
-      header: "Chapter (English)",
-    },
-    {
-      header: "View",
-      cell: ({ row }) => {
-        return (
-          <Link
-            href={`${process.env.NEXT_PUBLIC_HADITH_URL}/${slug}/chapters?apiKey=$2y$10$ichA6vai13wU1yiFOrMltwrd4Wz163Hg0HPKaUb5dG8Ab20hL9`}
-          >
-            <Button className="w-8 h-8">
-              <Eye />
-            </Button>
-          </Link>
-        );
-      },
-    },
-  ];
   return (
-    <div className="w-full h-[700px] overflow-auto">
-      <DataTable columns={columns} data={hadith} />
+    <div className="w-full h-[750px] overflow-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+      {hadith.map((item: any) => (
+        <Card key={item.chapterNumber} className="h-full flex flex-col py-2">
+          <CardHeader className="px-2">
+            <Tooltip>
+              <TooltipTrigger className="truncate">
+                <h3 className="text-base lg:text-lg font-semibold truncate">
+                  {item.chapterEnglish} ({item.chapterArabic})
+                </h3>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>
+                  {item.chapterEnglish} ({item.chapterArabic})
+                </p>
+              </TooltipContent>
+            </Tooltip>
+
+            <p className="text-sm text-muted-foreground">
+              Chapter No: {item.chapterNumber}
+            </p>
+          </CardHeader>
+          <CardContent className="px-2">
+            <Link
+              href={`/hadith/${slug}/chapter/${item.chapterNumber}/${item.chapterEnglish}`}
+            >
+              <Tooltip>
+                <TooltipTrigger className="truncate w-full">
+                  <Button className="w-full">View Hadiths</Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>
+                    {item.chapterEnglish} ({item.chapterArabic})
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </Link>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }

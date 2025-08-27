@@ -22,22 +22,22 @@ const hadithSections = [
   },
   {
     name: "Sahih Muslim",
-    href: "/hadith?collection=muslim",
+    href: "/hadith/sahih-muslim",
     icon: CheckCircle,
   },
   {
     name: "Sunan Abu Dawud",
-    href: "/hadith?collection=abudawud",
+    href: "/hadith/abu-dawood",
     icon: CheckCircle,
   },
   {
     name: "Sunan Ibn Majah",
-    href: "/hadith?collection=ibnmajah",
+    href: "/hadith/ibn-e-majah",
     icon: CheckCircle,
   },
   {
     name: "Jami at-Tirmidhi",
-    href: "/hadith?collection=tirmidhi",
+    href: "/hadith/al-tirmidhi",
     icon: CheckCircle,
   },
 ];

@@ -9,7 +9,7 @@ import {
 
 interface IslamicBreadcrumbProps {
   section: string;
-  subsection?: string;
+  subsection?: string[];
 }
 
 export function IslamicBreadcrumb({
@@ -40,14 +40,17 @@ export function IslamicBreadcrumb({
             <BreadcrumbPage>{section}</BreadcrumbPage>
           )}
         </BreadcrumbItem>
-        {subsection && (
-          <>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{subsection}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
-        )}
+        {subsection &&
+          subsection?.map((item: string) => {
+            return (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{item}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
+            );
+          })}
       </BreadcrumbList>
     </Breadcrumb>
   );

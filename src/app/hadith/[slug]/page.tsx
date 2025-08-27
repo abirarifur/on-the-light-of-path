@@ -45,7 +45,10 @@ export default async function page({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <IslamicBreadcrumb section="Hadith" subsection="" />
+      <IslamicBreadcrumb
+        section="Hadith"
+        subsection={[HADITH_COLLECTION[slug].name]}
+      />
 
       <div className="space-y-6">
         <div className="flex items-center gap-3">
