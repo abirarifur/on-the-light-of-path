@@ -9,7 +9,7 @@ import {
 
 interface IslamicBreadcrumbProps {
   section: string;
-  subsection?: string;
+  subsection?: string[];
 }
 
 export function IslamicBreadcrumb({
@@ -23,12 +23,12 @@ export function IslamicBreadcrumb({
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem>
+        {/* <BreadcrumbItem>
           <BreadcrumbLink href="/islamic-studies">
             Islamic Studies
           </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        </BreadcrumbItem> */}
+        {/* <BreadcrumbSeparator /> */}
         <BreadcrumbItem>
           {subsection ? (
             <BreadcrumbLink
@@ -40,14 +40,17 @@ export function IslamicBreadcrumb({
             <BreadcrumbPage>{section}</BreadcrumbPage>
           )}
         </BreadcrumbItem>
-        {subsection && (
-          <>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{subsection}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
-        )}
+        {subsection &&
+          subsection?.map((item: string) => {
+            return (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{item}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
+            );
+          })}
       </BreadcrumbList>
     </Breadcrumb>
   );
