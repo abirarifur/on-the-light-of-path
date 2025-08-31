@@ -31,7 +31,7 @@ export default function QuranPage({
     async function fetchSurah() {
       setLoading(true);
       const res = await fetch(
-        `http://api.alquran.cloud/v1/surah/${surahNumber}/${language}`
+        `${process.env.NEXT_PUBLIC_QURAN_URL}/v1/surah/${surahNumber}/${language}`
       );
       const data = await res.json();
       setSurahData(data);
