@@ -11,19 +11,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useSearchParams } from "next/navigation";
 
 const LANGUAGES = [
-  { value: "en.asad", label: "English" },
-  { value: "ar.alafasy", label: "Arabic" },
+  { value: "english", label: "English" },
+  { value: "arabic2", label: "Arabic" },
+  { value: "bengali", label: "Bangla" },
+  { value: "urdu", label: "Urdu" },
 ];
 
-export default function QuranPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const surahNumber = searchParams.surah || "1";
-  const [language, setLanguage] = useState("ar.alafasy");
+export default function QuranPage() {
+  const surahNumber = useSearchParams().get("surah") || "1";
+
+  const [language, setLanguage] = useState("arabic2");
   const [surahData, setSurahData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
@@ -31,14 +31,14 @@ export default function QuranPage({
     async function fetchSurah() {
       setLoading(true);
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_QURAN_URL}/v1/surah/${surahNumber}/${language}`
+        `${process.env.NEXT_PUBLIC_QURAN_URL}/${surahNumber}.json`
       );
       const data = await res.json();
       setSurahData(data);
       setLoading(false);
     }
     fetchSurah();
-  }, [surahNumber, language]);
+  }, [surahNumber]);
 
   return (
     <div>
@@ -50,13 +50,13 @@ export default function QuranPage({
             <Book className="h-8 w-8 text-primary" />
             <div>
               <h1 className="text-3xl font-bold">
-                {surahData?.data?.englishName}{" "}
+                {surahData?.surahName}{" "}
                 <small className="text-sm font-medium">
-                  {surahData?.data?.name}
+                  ({surahData?.surahNameTranslation})
                 </small>
               </h1>
               <p className="text-muted-foreground">
-                {surahData?.data?.revelationType}
+                {surahData?.revelationPlace}
               </p>
             </div>
           </div>
@@ -75,27 +75,41 @@ export default function QuranPage({
         </div>
         <Card className="h-[700px] overflow-auto">
           <CardHeader>
-            <CardTitle>
-              Total Ayahs: {surahData?.data?.ayahs?.length ?? 0}
-            </CardTitle>
+            <CardTitle>Total Ayahs: {surahData?.totalAyah}</CardTitle>
           </CardHeader>
           <CardContent>
             {loading ? (
               <div>Loading...</div>
             ) : (
-              <ul className="space-y-2">
-                {surahData?.data?.ayahs?.map((ayah: any) => (
-                  <li
-                    key={ayah.number}
-                    className="flex items-start gap-3 border-b pb-2 last:border-b-0"
-                  >
-                    <span className="font-medium text-primary">
-                      {ayah.numberInSurah}.
-                    </span>
-                    <span>{ayah.text}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-4">
+                {surahData?.audio && surahData.audio[1] && (
+                  <audio controls className="w-full mt-2">
+                    <source
+                      src={`${surahData.audio[1].originalUrl}`}
+                      type="audio/mpeg"
+                    />
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
+
+                <ul className="space-y-2">
+                  {surahData?.[language]?.map((ayah: any, index: number) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 border-b pb-2 last:border-b-0"
+                    >
+                      <p className="font-medium text-primary">{index + 1}.</p>
+                      <p
+                        className={`${
+                          language === "arabic1" ? "text-4xl" : "text-base"
+                        } font-medium`}
+                      >
+                        {ayah}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </CardContent>
         </Card>

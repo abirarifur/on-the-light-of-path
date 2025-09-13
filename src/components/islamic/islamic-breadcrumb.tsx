@@ -46,7 +46,16 @@ export function IslamicBreadcrumb({
               <>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{item}</BreadcrumbPage>
+                  <BreadcrumbLink
+                    href={`/${section
+                      .toLowerCase()
+                      .replaceAll("/", "-")}/${item}`}
+                  >
+                    {" "}
+                    <BreadcrumbPage>
+                      {item.replaceAll("%20", " ")}
+                    </BreadcrumbPage>
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
               </>
             );

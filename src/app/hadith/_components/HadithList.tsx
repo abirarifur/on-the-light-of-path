@@ -1,7 +1,6 @@
 "use client";
 import { DataTable } from "@/components/ui/DataTable";
 import React, { useEffect } from "react";
-import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Eye } from "lucide-react";
 import Link from "next/link";
@@ -48,7 +47,7 @@ export default function HadithList({ slug }: Props) {
           <CardHeader className="px-2">
             <Tooltip>
               <TooltipTrigger className="truncate">
-                <h3 className="text-base lg:text-lg font-semibold truncate">
+                <h3 className="text-base lg:text-lg text-left font-semibold truncate">
                   {item.chapterEnglish} ({item.chapterArabic})
                 </h3>
               </TooltipTrigger>
@@ -69,7 +68,7 @@ export default function HadithList({ slug }: Props) {
             >
               <Tooltip>
                 <TooltipTrigger className="truncate w-full">
-                  <Button className="w-full">View Hadiths</Button>
+                  <Button className="w-full">Open</Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>

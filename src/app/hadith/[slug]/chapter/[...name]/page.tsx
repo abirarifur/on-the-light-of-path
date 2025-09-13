@@ -18,7 +18,7 @@ export default async function page({
 
   return (
     <div>
-      <IslamicBreadcrumb section="Hadith" subsection={[slug, name[1]]} />
+      <IslamicBreadcrumb section="Hadith" subsection={[slug]} />
 
       <div className="space-y-6">
         <div className="flex items-center gap-3">
