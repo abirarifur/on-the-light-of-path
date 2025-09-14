@@ -6,7 +6,35 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FileText, BookOpen, Users, Star } from "lucide-react";
+import { FileText, BookOpen, Users, Star, CheckCircle } from "lucide-react";
+
+const hadithSections = [
+  {
+    name: "Sahih Bukhari",
+    href: "/hadith/sahih-bukhari",
+    icon: CheckCircle,
+  },
+  {
+    name: "Sahih Muslim",
+    href: "/hadith/sahih-muslim",
+    icon: CheckCircle,
+  },
+  {
+    name: "Sunan Abu Dawud",
+    href: "/hadith/abu-dawood",
+    icon: CheckCircle,
+  },
+  {
+    name: "Sunan Ibn Majah",
+    href: "/hadith/ibn-e-majah",
+    icon: CheckCircle,
+  },
+  {
+    name: "Jami at-Tirmidhi",
+    href: "/hadith/al-tirmidhi",
+    icon: CheckCircle,
+  },
+];
 
 export default function HadithPage() {
   return (
@@ -25,6 +53,24 @@ export default function HadithPage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {hadithSections?.map((item: any, index: number) => {
+            return (
+              <Card key={index}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BookOpen className="h-5 w-5" />
+                    Sahih al-Bukhari
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Compiled by Imam Bukhari, containing over 7,000 authentic
+                    narrations covering all aspects of Islamic life.
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
