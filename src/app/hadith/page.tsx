@@ -1,12 +1,6 @@
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { FileText, BookOpen, Users, Star, CheckCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, CheckCircle, FileText } from "lucide-react";
 
 const hadithSections = [
   {

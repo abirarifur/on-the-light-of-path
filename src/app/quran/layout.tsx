@@ -1,4 +1,5 @@
 import { QuranSidebar } from "@/components/islamic/quran-sidebar";
+import { Suspense } from "react";
 
 export default function QuranLayout({
   children,
@@ -7,7 +8,9 @@ export default function QuranLayout({
 }) {
   return (
     <div className="flex h-full">
-      <QuranSidebar />
+      <Suspense fallback={<div>Loading…</div>}>
+        <QuranSidebar />
+      </Suspense>
       <main className="h-full flex-1 px-4">{children}</main>
     </div>
   );

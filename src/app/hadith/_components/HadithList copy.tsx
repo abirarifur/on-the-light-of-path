@@ -1,10 +1,10 @@
 "use client";
-import { DataTable } from "@/components/ui/DataTable";
-import React, { useEffect } from "react";
-import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
+import { DataTable } from "@/components/ui/DataTable";
+import { ColumnDef } from "@tanstack/react-table";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import React, { useEffect } from "react";
 
 type Props = {
   slug: string;

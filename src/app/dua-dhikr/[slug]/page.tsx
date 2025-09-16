@@ -1,13 +1,6 @@
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Card, CardContent } from "@/components/ui/card";
 import { FileText } from "lucide-react";
-import Link from "next/link";
 
 export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = params;

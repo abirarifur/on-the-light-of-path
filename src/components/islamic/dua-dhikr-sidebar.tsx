@@ -2,16 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  ChevronRight,
   Hand,
   Home,
-  ChevronRight,
-  Sun,
   Moon,
-  Utensils,
-  Plane,
-  Shield,
-  Heart,
-  BookMarked,
+  Sun
 } from "lucide-react";
 import Link from "next/link";
 

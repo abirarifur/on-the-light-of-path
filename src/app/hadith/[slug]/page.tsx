@@ -1,12 +1,5 @@
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { FileText, BookOpen, Users, Star } from "lucide-react";
+import { FileText } from "lucide-react";
 import HadithList from "../_components/HadithList";
 
 const HADITH_COLLECTION: Record<
@@ -41,7 +34,6 @@ const HADITH_COLLECTION: Record<
 
 export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = await params;
-  console.log();
 
   return (
     <div>

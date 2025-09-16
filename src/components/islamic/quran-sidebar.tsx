@@ -2,64 +2,11 @@
 
 import { SURAH } from "@/app/_data/surah";
 import { Button } from "@/components/ui/button";
-import {
-  Book,
-  Home,
-  ChevronRight,
-  BookOpen,
-  Search,
-  Volume2,
-  Languages,
-  Star,
-  Library,
-} from "lucide-react";
+import { Book, Home } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-// const quranSections = [
-//   {
-//     name: "Surahs",
-//     href: "/quran/surahs",
-//     icon: BookOpen,
-//     description: "All 114 chapters",
-//   },
-//   {
-//     name: "Recitation",
-//     href: "/quran/recitation",
-//     icon: Volume2,
-//     description: "Audio recitations",
-//   },
-//   {
-//     name: "Translation",
-//     href: "/quran/translation",
-//     icon: Languages,
-//     description: "Translations & meanings",
-//   },
-//   {
-//     name: "Tafseer",
-//     href: "/quran/tafseer",
-//     icon: Search,
-//     description: "Commentary & explanation",
-//   },
-//   {
-//     name: "Favorites",
-//     href: "/quran/favorites",
-//     icon: Star,
-//     description: "Bookmarked verses",
-//   },
-//   {
-//     name: "Study Notes",
-//     href: "/quran/notes",
-//     icon: Library,
-//     description: "Personal notes",
-//   },
-// ];
-
-interface QuranSidebarProps {
-  currentPath?: string;
-}
-
-export function QuranSidebar({ currentPath }: QuranSidebarProps) {
+export function QuranSidebar() {
   const params = useSearchParams();
   const surahParam = params.get("surah");
   return (

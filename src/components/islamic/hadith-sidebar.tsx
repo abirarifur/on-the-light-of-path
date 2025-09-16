@@ -1,17 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  FileText,
-  Home,
-  ChevronRight,
-  Users,
-  CheckCircle,
-  AlertCircle,
-  Search,
-  Library,
-  BookMarked,
-} from "lucide-react";
+import { CheckCircle, ChevronRight, FileText, Home } from "lucide-react";
 import Link from "next/link";
 
 const hadithSections = [

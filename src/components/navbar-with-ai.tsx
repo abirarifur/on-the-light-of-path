@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Home, User, Book, Star, Menu, Bot } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { AIPanel } from "@/components/ai-sidebar";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Book, Bot, Home, Menu, Star, User } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
