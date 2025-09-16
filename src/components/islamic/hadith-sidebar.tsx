@@ -48,7 +48,7 @@ interface HadithSidebarProps {
 
 export function HadithSidebar({ currentPath }: HadithSidebarProps) {
   return (
-    <div className="w-64 bg-background border-r h-screen flex flex-col">
+    <div className="w-64 bg-background border-r h-full overflow-y-auto flex flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
         <Button variant="ghost" className="w-full justify-start mb-4" asChild>

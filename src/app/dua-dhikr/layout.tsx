@@ -6,11 +6,9 @@ export default function DuaDhikrLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <DuaDhikrSidebar />
-      <main className="flex-1 min-h-screen overflow-y-auto p-8">
-        {children}
-      </main>
+      <main className="h-full flex-1 px-4">{children}</main>
     </div>
   );
 }

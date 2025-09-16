@@ -7,19 +7,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { AIPanel } from "@/components/ai-sidebar";
 import { useState } from "react";
 
-interface NavbarProps {
-  children: React.ReactNode;
-}
-
-export default function Navbar({ children }: NavbarProps) {
-  const [isAIPanelOpen, setIsAIPanelOpen] = useState(false);
-
-  const toggleAIPanel = () => {
-    setIsAIPanelOpen(!isAIPanelOpen);
-  };
-
+export default function Navbar() {
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col fixed top-0 left-0 right-0 z-50 max-h-[66px] min-h-[66px]">
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -61,8 +51,8 @@ export default function Navbar({ children }: NavbarProps) {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={toggleAIPanel}
-                className={`${isAIPanelOpen ? "bg-accent" : ""}`}
+                // onClick={toggleAIPanel}
+                // className={`${isAIPanelOpen ? "bg-accent" : ""}`}
               >
                 <Bot className="h-[1.2rem] w-[1.2rem]" />
                 <span className="sr-only">Toggle AI Assistant</span>
@@ -79,8 +69,8 @@ export default function Navbar({ children }: NavbarProps) {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={toggleAIPanel}
-                className={`${isAIPanelOpen ? "bg-accent" : ""}`}
+                // onClick={toggleAIPanel}
+                // className={`${isAIPanelOpen ? "bg-accent" : ""}`}
               >
                 <Bot className="h-[1.2rem] w-[1.2rem]" />
                 <span className="sr-only">Toggle AI Assistant</span>
@@ -95,22 +85,6 @@ export default function Navbar({ children }: NavbarProps) {
       </nav>
 
       {/* Main content area with AI panel */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Main content */}
-        <main
-          className={`flex-1 overflow-hidden transition-all duration-300 ease-in-out ${
-            isAIPanelOpen ? "mr-0" : "mr-0"
-          }`}
-        >
-          {children}
-        </main>
-
-        {/* AI Panel */}
-        <AIPanel
-          isOpen={isAIPanelOpen}
-          onClose={() => setIsAIPanelOpen(false)}
-        />
-      </div>
     </div>
   );
 }

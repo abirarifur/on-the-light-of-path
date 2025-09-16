@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book } from "lucide-react";
+import { ArrowRight, Book, ClosedCaption, X } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const LANGUAGES = [
   { value: "english", label: "English" },
@@ -25,6 +26,8 @@ export default function QuranPage() {
 
   const [language, setLanguage] = useState("arabic2");
   const [surahData, setSurahData] = useState<any>(null);
+  const [isTafsirOpen, setIsTafsirOpen] = useState<any>(false);
+  const [tafsir, setTafsir] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -40,8 +43,19 @@ export default function QuranPage() {
     fetchSurah();
   }, [surahNumber]);
 
+  const getTafsirData = async (surah: string, ayah: number) => {
+    setIsTafsirOpen(true);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_QURAN_URL}/tafsir/${surah}_${ayah}.json`
+    );
+    const data = await res.json();
+    console.log("=======================", data);
+
+    setTafsir(data);
+  };
+
   return (
-    <div>
+    <div className="h-full">
       <IslamicBreadcrumb section="Qur'an" />
 
       <div className="space-y-6">
@@ -73,7 +87,7 @@ export default function QuranPage() {
             </SelectContent>
           </Select>
         </div>
-        <Card className="h-[700px] overflow-auto">
+        <Card className="overflow-hidden">
           <CardHeader>
             <CardTitle>Total Ayahs: {surahData?.totalAyah}</CardTitle>
           </CardHeader>
@@ -81,34 +95,76 @@ export default function QuranPage() {
             {loading ? (
               <div>Loading...</div>
             ) : (
-              <div className="space-y-4">
-                {surahData?.audio && surahData.audio[1] && (
-                  <audio controls className="w-full mt-2">
-                    <source
-                      src={`${surahData.audio[1].originalUrl}`}
-                      type="audio/mpeg"
-                    />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
+              <div className="flex gap-4 divide-x-2">
+                <div className="space-y-4 flex-1">
+                  {surahData?.audio && surahData.audio[1] && (
+                    <audio controls className="w-full mt-2">
+                      <source
+                        src={`${surahData.audio[1].originalUrl}`}
+                        type="audio/mpeg"
+                      />
+                      Your browser does not support the audio element.
+                    </audio>
+                  )}
 
-                <ul className="space-y-2">
-                  {surahData?.[language]?.map((ayah: any, index: number) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 border-b pb-2 last:border-b-0"
-                    >
-                      <p className="font-medium text-primary">{index + 1}.</p>
-                      <p
-                        className={`${
-                          language === "arabic1" ? "text-4xl" : "text-base"
-                        } font-medium`}
+                  <ul className="space-y-2 h-[600px] overflow-auto ">
+                    {surahData?.[language]?.map((ayah: any, index: number) => (
+                      <li
+                        key={index}
+                        className="flex justify-between items-start gap-3 border-b pb-2 last:border-b-0"
                       >
-                        {ayah}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                        <div className="flex items-center gap-3 flex-1">
+                          <p className="font-medium text-primary">
+                            {index + 1}.
+                          </p>
+                          <p
+                            className={`${
+                              language === "arabic1" ? "text-4xl" : "text-base"
+                            } font-medium`}
+                          >
+                            {ayah}
+                          </p>
+                        </div>
+                        <Button
+                          variant="link"
+                          onClick={() => getTafsirData(surahNumber, index + 1)}
+                        >
+                          Tafsir <ArrowRight />
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {isTafsirOpen && (
+                  <div className="flex-1 w-full px-4 max-h-[700px] overflow-auto ">
+                    <X
+                      className="ml-auto"
+                      onClick={() => {
+                        setIsTafsirOpen(false);
+                        setTafsir({});
+                      }}
+                    />
+                    {!tafsir.tafsirs ? (
+                      <p>No data available.</p>
+                    ) : (
+                      <div className="max-h-fit overflow-auto ">
+                        <h3 className="font-semibold ">
+                          Surah: {tafsir?.surahNo}, Ayah: {tafsir?.ayahNo}
+                        </h3>
+
+                        {tafsir.tafsirs.map((item: any, idx: number) => (
+                          <div key={idx} className="mb-4">
+                            <h3 className="font-semibold">
+                              Author:{" "}
+                              <span className="italic">{item.author}</span>
+                            </h3>
+                            <p>{item.content}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </CardContent>

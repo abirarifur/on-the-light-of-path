@@ -6,11 +6,9 @@ export default function QuranLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <QuranSidebar />
-      <main className="flex-1 min-h-screen overflow-y-auto p-8">
-        {children}
-      </main>
+      <main className="h-full flex-1 px-4">{children}</main>
     </div>
   );
 }
