@@ -22,7 +22,6 @@ export function AIPanel({ isOpen, onClose }: AIPanelProps) {
   const handleSendMessage = () => {
     if (message.trim()) {
       // Here you would handle sending the message to your AI
-      console.log("Sending message:", message);
       setMessage("");
     }
   };

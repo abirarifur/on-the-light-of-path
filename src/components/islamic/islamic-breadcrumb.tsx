@@ -32,9 +32,10 @@ export function IslamicBreadcrumb({
         <BreadcrumbItem>
           {subsection ? (
             <BreadcrumbLink
-              href={`/${section.toLowerCase().replace("/", "-")}`}
+              href={`/${section.toLowerCase().replaceAll("/", "-")}`}
+              className="capitalize"
             >
-              {section}
+              {section.replaceAll("-", " ").replaceAll("%20", " ")}
             </BreadcrumbLink>
           ) : (
             <BreadcrumbPage>{section}</BreadcrumbPage>
@@ -52,8 +53,8 @@ export function IslamicBreadcrumb({
                       .replaceAll("/", "-")}/${item}`}
                   >
                     {" "}
-                    <BreadcrumbPage>
-                      {item.replaceAll("%20", " ")}
+                    <BreadcrumbPage className="capitalize">
+                      {item.replaceAll("-", " ").replaceAll("%20", " ")}
                     </BreadcrumbPage>
                   </BreadcrumbLink>
                 </BreadcrumbItem>

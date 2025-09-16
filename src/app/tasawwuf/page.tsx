@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Heart, Lightbulb, Users, BookOpen } from "lucide-react";
+import { Heart, Lightbulb, Users } from "lucide-react";
 
 export default function TasawwufPage() {
   return (

@@ -1,13 +1,6 @@
 import HadithDetails from "@/app/hadith/_components/HadithDetails";
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { FileText, BookOpen, Users, Star } from "lucide-react";
+import { FileText } from "lucide-react";
 
 export default async function page({
   params,

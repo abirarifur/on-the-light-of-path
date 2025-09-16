@@ -11,7 +11,7 @@ import { Hand, Moon, Sun, Heart } from "lucide-react";
 export default function DuaDhikrPage() {
   return (
     <div>
-      <IslamicBreadcrumb section="Dua/Dhikr" />
+      <IslamicBreadcrumb section="dua-dhikr" />
 
       <div className="space-y-6">
         <div className="flex items-center gap-3">

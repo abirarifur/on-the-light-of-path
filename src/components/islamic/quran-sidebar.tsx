@@ -2,65 +2,15 @@
 
 import { SURAH } from "@/app/_data/surah";
 import { Button } from "@/components/ui/button";
-import {
-  Book,
-  Home,
-  ChevronRight,
-  BookOpen,
-  Search,
-  Volume2,
-  Languages,
-  Star,
-  Library,
-} from "lucide-react";
+import { Book, Home } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-// const quranSections = [
-//   {
-//     name: "Surahs",
-//     href: "/quran/surahs",
-//     icon: BookOpen,
-//     description: "All 114 chapters",
-//   },
-//   {
-//     name: "Recitation",
-//     href: "/quran/recitation",
-//     icon: Volume2,
-//     description: "Audio recitations",
-//   },
-//   {
-//     name: "Translation",
-//     href: "/quran/translation",
-//     icon: Languages,
-//     description: "Translations & meanings",
-//   },
-//   {
-//     name: "Tafseer",
-//     href: "/quran/tafseer",
-//     icon: Search,
-//     description: "Commentary & explanation",
-//   },
-//   {
-//     name: "Favorites",
-//     href: "/quran/favorites",
-//     icon: Star,
-//     description: "Bookmarked verses",
-//   },
-//   {
-//     name: "Study Notes",
-//     href: "/quran/notes",
-//     icon: Library,
-//     description: "Personal notes",
-//   },
-// ];
-
-interface QuranSidebarProps {
-  currentPath?: string;
-}
-
-export function QuranSidebar({ currentPath }: QuranSidebarProps) {
+export function QuranSidebar() {
+  const params = useSearchParams();
+  const surahParam = params.get("surah");
   return (
-    <div className="w-64 bg-background border-r h-screen overflow-auto flex flex-col">
+    <div className="w-[256px] bg-background border-r h-full overflow-y-auto flex flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
         <Button variant="ghost" className="w-full justify-start mb-4" asChild>
@@ -86,15 +36,18 @@ export function QuranSidebar({ currentPath }: QuranSidebarProps) {
             return (
               <Link href={`/quran?surah=${section.number}`} key={section.name}>
                 <Button
-                  // variant={isActive ? "default" : "ghost"}
-                  variant={"ghost"}
+                  variant={
+                    Number(surahParam) === section.number || !surahParam
+                      ? "secondary"
+                      : "ghost"
+                  }
+                  // variant={"ghost"}
                   className="w-full justify-start cursor-pointer"
                   asChild
                 >
                   {/* <Icon className="mr-2 h-4 w-4" /> */}
                   <div className="flex-1 text-left">
-                    <div>{section.name}</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground">
                       {section.englishName}
                     </div>
                   </div>

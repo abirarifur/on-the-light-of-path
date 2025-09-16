@@ -1,15 +1,13 @@
 "use client";
-import { DataTable } from "@/components/ui/DataTable";
-import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Eye } from "lucide-react";
-import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
+import React, { useEffect } from "react";
 
 type Props = {
   slug: string;

@@ -1,17 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  FileText,
-  Home,
-  ChevronRight,
-  Users,
-  CheckCircle,
-  AlertCircle,
-  Search,
-  Library,
-  BookMarked,
-} from "lucide-react";
+import { CheckCircle, ChevronRight, FileText, Home } from "lucide-react";
 import Link from "next/link";
 
 const hadithSections = [
@@ -48,7 +38,7 @@ interface HadithSidebarProps {
 
 export function HadithSidebar({ currentPath }: HadithSidebarProps) {
   return (
-    <div className="w-64 bg-background border-r h-screen flex flex-col">
+    <div className="w-64 bg-background border-r h-full overflow-y-auto flex flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
         <Button variant="ghost" className="w-full justify-start mb-4" asChild>

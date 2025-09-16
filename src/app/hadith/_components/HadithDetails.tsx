@@ -1,14 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 } from "@/components/ui/pagination";
+import React, { useEffect } from "react";
 
 type Props = {
   chapterNumber?: string;
