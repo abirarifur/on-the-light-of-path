@@ -55,7 +55,6 @@ export default function QuranContent({ surah }: { surah?: string }) {
       `${process.env.NEXT_PUBLIC_QURAN_URL}/tafsir/${surah}_${ayah}.json`
     );
     const data = await res.json();
-    console.log("=======================", data);
 
     setTafsir(data);
   };
@@ -90,7 +89,7 @@ export default function QuranContent({ surah }: { surah?: string }) {
           </SelectContent>
         </Select>
       </div>
-      <Card className="overflow-hidden">
+      <Card className="overflow-hidden max-h-[600px]">
         <CardHeader>
           <CardTitle>Total Ayahs: {surahData?.totalAyah}</CardTitle>
         </CardHeader>
