@@ -60,7 +60,7 @@ export default function QuranContent({ surah }: { surah?: string }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Book className="h-8 w-8 text-primary" />
@@ -89,7 +89,7 @@ export default function QuranContent({ surah }: { surah?: string }) {
           </SelectContent>
         </Select>
       </div>
-      <Card className="overflow-hidden max-h-[600px]">
+      <Card className="overflow-hidden min-h-[600px]">
         <CardHeader>
           <CardTitle>Total Ayahs: {surahData?.totalAyah}</CardTitle>
         </CardHeader>

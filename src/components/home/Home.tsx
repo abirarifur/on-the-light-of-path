@@ -21,6 +21,23 @@ import {
 import Link from "next/link";
 import { AIPanel } from "../ai-sidebar";
 
+const COLOR = [
+  "#FF6467",
+  "#2B7FFF",
+  "#FDC745",
+  "#FF8904",
+  "#7CCF35",
+  "#31C950",
+  "#8E51FF",
+  "#36BBA7",
+  "#3BB8DB",
+  "#34A6F4",
+  "#37BC7D",
+  "#615FFF",
+  "#FFB93B",
+  "#AD46FF",
+];
+
 export default function Home() {
   const [isAIPanelOpen, setIsAIPanelOpen] = useState(false);
 
@@ -104,7 +121,10 @@ export default function Home() {
               },
             ].map(({ icon: Icon, title, desc, content, href }, i) => (
               <Link key={i} href={href} className="w-full max-w-xs">
-                <Card className="w-full h-full hover:shadow-lg transition-shadow cursor-pointer">
+                <Card
+                  className="w-full h-full hover:shadow-lg transition-shadow cursor-pointer"
+                  style={{ borderColor: COLOR[i] }}
+                >
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <Icon className="w-8 h-8 text-primary" />
