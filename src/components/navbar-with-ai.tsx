@@ -15,12 +15,12 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <Star className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">The Way of Light</span>
+                <span className="text-xl font-bold">QURANILIFE</span>
               </Link>
             </div>
 
             {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            {/* <div className="hidden md:flex items-center space-x-8">
               <Link
                 href="/"
                 className="flex items-center space-x-1 text-foreground/60 hover:text-foreground transition-colors"
@@ -42,7 +42,7 @@ export default function Navbar() {
                 <Book className="h-4 w-4" />
                 <span>Docs</span>
               </Link>
-            </div>
+            </div> */}
 
             {/* Mobile Menu Button, AI Toggle and Theme Toggle */}
             <div className="md:hidden flex items-center space-x-2">
