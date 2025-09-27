@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <div className="pt-[66px] pb-10 flex h-screen">{children}</div>
+          <div className="pt-[66px] pb-10 flex h-screen ">{children}</div>
         </Providers>
       </body>
     </html>
