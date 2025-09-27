@@ -11,6 +11,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const LANGUAGES = [
   { value: "english", label: "English" },
@@ -157,34 +167,74 @@ export default function QuranContent({
                   </ul>
                 </div>
                 {isTafsirOpen && (
-                  <div className="flex-1 w-full px-4 max-h-[700px] overflow-auto ">
-                    <X
-                      className="ml-auto"
-                      onClick={() => {
-                        setIsTafsirOpen(false);
-                        setTafsir({});
-                      }}
-                    />
-                    {!tafsir.tafsirs ? (
-                      <p>No data available.</p>
-                    ) : (
-                      <div className="max-h-fit overflow-auto ">
-                        <h3 className="font-semibold ">
-                          Surah: {tafsir?.surahNo}, Ayah: {tafsir?.ayahNo}
-                        </h3>
+                  <>
+                    {/* <div className="flex-1 w-full px-4 max-h-[700px] overflow-auto hidden lg:flex">
+                      <X
+                        className="ml-auto"
+                        onClick={() => {
+                          setIsTafsirOpen(false);
+                          setTafsir({});
+                        }}
+                      />
+                      {!tafsir.tafsirs ? (
+                        <p>No data available.</p>
+                      ) : (
+                        <div className="max-h-fit overflow-auto ">
+                          <h3 className="font-semibold ">
+                            Surah: {tafsir?.surahNo}, Ayah: {tafsir?.ayahNo}
+                          </h3>
 
-                        {tafsir.tafsirs.map((item: any, idx: number) => (
-                          <div key={idx} className="mb-4">
-                            <h3 className="font-semibold">
-                              Author:{" "}
-                              <span className="italic">{item.author}</span>
-                            </h3>
-                            <p>{item.content}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                          {tafsir.tafsirs.map((item: any, idx: number) => (
+                            <div key={idx} className="mb-4">
+                              <h3 className="font-semibold">
+                                Author:{" "}
+                                <span className="italic">{item.author}</span>
+                              </h3>
+                              <p>{item.content}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div> */}
+
+                    <Dialog
+                      open={isTafsirOpen}
+                      modal={true}
+                      onOpenChange={setIsTafsirOpen}
+                    >
+                      <DialogContent className="max-h-[80vh]">
+                        <DialogHeader>
+                          <DialogTitle>Tafsir</DialogTitle>
+                          {/* <DialogDescription>
+                            Please read our terms of service carefully.
+                          </DialogDescription> */}
+                        </DialogHeader>
+                        <ScrollArea className="h-[400px] md:h-[600px] w-full rounded-md ">
+                          {!tafsir.tafsirs ? (
+                            <p>No data available.</p>
+                          ) : (
+                            <div className="max-h-fit overflow-auto ">
+                              <h3 className="font-semibold ">
+                                Surah: {tafsir?.surahNo}, Ayah: {tafsir?.ayahNo}
+                              </h3>
+
+                              {tafsir.tafsirs.map((item: any, idx: number) => (
+                                <div key={idx} className="mb-4">
+                                  <h3 className="font-semibold">
+                                    Author:{" "}
+                                    <span className="italic">
+                                      {item.author}
+                                    </span>
+                                  </h3>
+                                  <p>{item.content}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                  </>
                 )}
               </div>
             )}

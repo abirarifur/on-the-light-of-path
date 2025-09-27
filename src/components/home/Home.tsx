@@ -53,7 +53,7 @@ export default function Home() {
         }`}
       >
         <div className="font-sans h-full px-2 lg:px-8 pb-8 flex flex-col items-center justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl justify-items-center">
             {[
               {
                 icon: Book,
@@ -122,22 +122,24 @@ export default function Home() {
             ].map(({ icon: Icon, title, desc, content, href }, i) => (
               <Link key={i} href={href} className="w-full max-w-xs">
                 <Card
-                  className="w-full h-full hover:shadow-lg transition-shadow cursor-pointer"
+                  className="w-full h-full hover:shadow-lg transition-shadow cursor-pointer p-3 md:p-4 gap-2"
                   style={{ borderColor: COLOR[i] }}
                 >
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className="w-8 h-8 text-primary" />
+                  <CardHeader className="p-2 md:p-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-1 md:gap-3">
+                      <Icon className="w-10 md:w-8 h-10 md:h-8 text-primary" />
                       <CardTitle className="text-lg">{title}</CardTitle>
                     </div>
-                    <CardDescription>{desc}</CardDescription>
+                    <CardDescription className="hidden lg:flex">
+                      {desc}
+                    </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                  {/* <CardContent className="hidden lg:flex">
+                    <p className="text-sm text-muted-foreground leading-relaxed ">
                       {content}
                     </p>
-                  </CardContent>
-                  <CardFooter>
+                  </CardContent> */}
+                  <CardFooter className="p-2">
                     <span className="text-xs text-primary hover:text-primary/80">
                       Explore {title} →
                     </span>
