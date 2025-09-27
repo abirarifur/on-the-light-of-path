@@ -2,7 +2,7 @@
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Book, Bot, Home, Menu, Star, User } from "lucide-react";
+import { Bot, Menu } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -14,7 +14,6 @@ export default function Navbar() {
             {/* Logo/Brand */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <Star className="h-6 w-6 text-primary" />
                 <span className="text-xl font-bold">QURANILIFE</span>
               </Link>
             </div>

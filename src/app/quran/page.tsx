@@ -1,16 +1,12 @@
-import { Suspense } from "react";
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import QuranContent from "./_components/QuranContent";
-import Loading from "./loading";
+import QuranContainer from "./_components/QuranContainer";
 
 export default async function page({ searchParams }: any) {
   const surahParam = await searchParams;
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       <IslamicBreadcrumb section="Qur'an" />
-      <Suspense fallback={<Loading />}>
-        <QuranContent surah={surahParam?.surah} />
-      </Suspense>
+      <QuranContainer surah={surahParam?.surah} />
     </div>
   );
 }

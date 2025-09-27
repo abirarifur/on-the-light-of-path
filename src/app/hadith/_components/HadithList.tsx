@@ -6,8 +6,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { setHadiths } from "@/lib/slices/hadith.slice";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 type Props = {
   slug: string;
@@ -18,6 +20,7 @@ export default function HadithList({ slug }: Props) {
   const [limit, setLimit] = React.useState(10);
   const [hadith, setHadith] = React.useState<any>([]);
   const [loading, setLoading] = React.useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchHadith() {
@@ -28,6 +31,7 @@ export default function HadithList({ slug }: Props) {
           { cache: "no-store", next: { revalidate: 10 } }
         );
         const data = await res.json();
+        dispatch(setHadiths(data?.chapters || []));
         setHadith(data?.chapters || []);
       } catch (error) {
         setHadith([]);

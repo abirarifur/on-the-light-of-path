@@ -1,6 +1,10 @@
 import HadithDetails from "@/app/hadith/_components/HadithDetails";
 import { IslamicBreadcrumb } from "@/components/islamic/islamic-breadcrumb";
-import { FileText } from "lucide-react";
+import { FileText, X } from "lucide-react";
+
+import { HadithSidebarMobile } from "@/components/islamic/hadith-sidebar-mobile";
+import { Button } from "@/components/ui/button";
+import HadithsContainer from "@/app/hadith/_components/HadithsContainer";
 
 export default async function page({
   params,
@@ -10,27 +14,11 @@ export default async function page({
   const { slug, name } = await params;
 
   return (
-    <div>
-      <IslamicBreadcrumb section="Hadith" subsection={[slug]} />
-
-      <div className="space-y-6">
-        <div className="flex items-center gap-3">
-          <FileText className="h-8 w-8 text-primary" />
-          <div>
-            <h1 className="text-3xl font-bold">
-              {name[1].replaceAll("%20", " ")}
-            </h1>
-            {/* <p className="text-muted-foreground">
-              Sayings, actions, and approvals of Prophet Muhammad ﷺ
-            </p> */}
-          </div>
-        </div>
-
-        <div className="grid gap-6 grid-cols-1">
-          {/* <HadithList slug={slug} /> */}
-          <HadithDetails chapterNumber={name[0]} bookSlug={slug} />
-        </div>
+    <>
+      <div>
+        <IslamicBreadcrumb section="Hadith" subsection={[slug]} />
+        <HadithsContainer slug={slug} name={name} />
       </div>
-    </div>
+    </>
   );
 }
