@@ -6,19 +6,22 @@ import { Book, Home } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export function QuranSidebar() {
+interface Props {
+  sidebarClose: () => void;
+}
+
+export function QuranSidebarMobile({ sidebarClose }: Props) {
   const params = useSearchParams();
   const surahParam = params.get("surah");
+
   return (
-    <div className="w-[256px] bg-background border-r max-h-full overflow-y-auto hidden md:flex flex-col">
+    <div className="w-full bg-background border-r h-full overflow-y-auto flex flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
-        <Button variant="ghost" className="w-full justify-start mb-4" asChild>
-          <Link href="/">
-            <Home className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
-        </Button>
+        <Link href="/" className="flex items-center w-full mb-4">
+          <Home className="mr-2 h-4 w-4" />
+          Back to Home
+        </Link>
 
         {/* Section Header */}
         <div className="flex items-center gap-2 mb-4">
@@ -36,6 +39,7 @@ export function QuranSidebar() {
             return (
               <Link href={`/quran?surah=${section.number}`} key={section.name}>
                 <Button
+                  key={section.name}
                   variant={
                     Number(surahParam) === section.number || !surahParam
                       ? "secondary"

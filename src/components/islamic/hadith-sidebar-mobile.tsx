@@ -5,43 +5,15 @@ import { CheckCircle, ChevronRight, FileText, Home } from "lucide-react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const hadithSections = [
-  {
-    name: "Sahih Bukhari",
-    href: "/hadith/sahih-bukhari",
-    icon: CheckCircle,
-  },
-  {
-    name: "Sahih Muslim",
-    href: "/hadith/sahih-muslim",
-    icon: CheckCircle,
-  },
-  {
-    name: "Sunan Abu Dawud",
-    href: "/hadith/abu-dawood",
-    icon: CheckCircle,
-  },
-  {
-    name: "Sunan Ibn Majah",
-    href: "/hadith/ibn-e-majah",
-    icon: CheckCircle,
-  },
-  {
-    name: "Jami at-Tirmidhi",
-    href: "/hadith/al-tirmidhi",
-    icon: CheckCircle,
-  },
-];
-
 interface HadithSidebarProps {
   currentPath?: string;
 }
 
-export function HadithSidebar({ currentPath }: HadithSidebarProps) {
+export function HadithSidebarMobile({ currentPath }: HadithSidebarProps) {
   const { hadiths } = useSelector((state: any) => state.hadith);
 
   return (
-    <div className="w-64 bg-background border-r h-full overflow-y-auto hidden md:flex flex-col">
+    <div className="w-full bg-background border-r h-full overflow-y-auto flex md:hidden flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
         <Button variant="ghost" className="w-full justify-start mb-4" asChild>

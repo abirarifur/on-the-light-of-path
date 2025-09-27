@@ -26,9 +26,9 @@ export default async function page({ params }: { params: { slug: string } }) {
 
       <div className="space-y-6">
         <div className="flex items-center gap-3">
-          <FileText className="h-8 w-8 text-primary" />
+          <FileText className="h-7 w-7 text-primary" />
           <div>
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-lg md:text-2xl font-bold">
               {slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
             </h1>
             {/* <p className="text-muted-foreground">

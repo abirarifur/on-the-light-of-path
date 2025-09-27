@@ -7,11 +7,11 @@ export default function QuranLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-full">
+    <div className="flex h-full w-full">
       <Suspense fallback={<div>Loading…</div>}>
         <QuranSidebar />
       </Suspense>
-      <main className="h-full flex-1 px-4">{children}</main>
+      <main className="h-full flex-1 px-4 w-full">{children}</main>
     </div>
   );
 }

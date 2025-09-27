@@ -72,9 +72,9 @@ interface DuaDhikrSidebarProps {
   currentPath?: string;
 }
 
-export function DuaDhikrSidebar({ currentPath }: DuaDhikrSidebarProps) {
+export function DuaDhikrSidebarMobile({ currentPath }: DuaDhikrSidebarProps) {
   return (
-    <div className="w-64 bg-background border-r h-full hidden md:flex flex-col">
+    <div className="w-full bg-background border-r h-full flex md:hidden flex-col">
       <div className="p-4 flex-shrink-0">
         {/* Home Link */}
         <Button variant="ghost" className="w-full justify-start mb-4" asChild>
